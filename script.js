@@ -39,8 +39,10 @@ else if (years >= '22' && years <= '24') {
                                 console.log(years + " роки");}
     else if (years > 100) {
         console.log("Нічого собі, поважний вік :)");}
+
         else if (years === "") {
             console.log("Заповніть будь ласка поле :)");}
+            
             else   {
                 console.log(years + " років");}
  }
