@@ -1,48 +1,46 @@
+// ДЗ 1
+function drawTriangle(height, symbol) {
+    for (let i = 1; i <= height; i++) {
+      console.log(symbol.repeat(i));
+    }
+  }
+  drawTriangle(5, '*');
 
-var years = prompt("Вкажіть вік: ");{
+  function drawTriangle(height, symbol) { 
+    let i = 1;
+    while (i <= height) { 
+      console.log(symbol.repeat(i)); 
+      i++;
+    } 
+  } 
+  drawTriangle(5, '*'); 
 
-if (years === '1') {
-    console.log(years + " рік");} 
-    else if (years === '21') {
-        console.log(years + " рік");} 
-        else if  (years === '31') {
-            console.log(years + " рік");} 
-            else if (years === '41') {
-                console.log(years + " рік");} 
-                else if (years === '51') {
-                    console.log(years + " рік");} 
-                    else if (years === '61') {
-                        console.log(years + " рік");} 
-                        else if (years === '71') {
-                            console.log(years + " рік");} 
-                            else if (years === '81') {
-                                console.log(years + " рік");}
-                                else if (years === '91') {
-                                    console.log(years + " рік");}  
-else if (years >= '2' && years <= '4') {
-    console.log(years + " роки");} 
-else if (years >= '22' && years <= '24') {
-    console.log(years + " роки");}
-    else if (years >= 32 && years <= 34) {
-        console.log(years + " роки");}
-        else if (years >= 42 && years <= 44) {
-            console.log(years + " роки");}
-            else if (years >= 52 && years <= 54) {
-                console.log(years + " роки");}
-                else if (years >= 62 && years <= 64) {
-                    console.log(years + " роки");}
-                    else if (years >= 72 && years <= 74) {
-                        console.log(years + " роки");}
-                        else if (years >= 82 && years <= 84) {
-                            console.log(years + " роки");}
-                            else if (years >= 92 && years <= 94) {
-                                console.log(years + " роки");}
-    else if (years > 100) {
-        console.log("Нічого собі, поважний вік :)");}
+// ДЗ 2
 
-        else if (years === "") {
-            console.log("Заповніть будь ласка поле :)");}
-            
-            else   {
-                console.log(years + " років");}
- }
+//  let sum = 0;
+// for (let i = 1; i <= 100; i++) {
+//   if (i % 3) continue;
+//     console.log(x = i)
+//     sum += i;
+// }
+// console.log(sum);
+
+
+// или так 
+
+// let sum = 0;
+// for (let i = 1; i <= 100; i++) {
+//   if (i % 3) continue;
+//     sum += i;
+// }
+// console.log(sum);
+
+// ДЗ 3
+function pow(x, y) {
+    return Math.pow(x, y);
+  }
+  
+  const base = 2;
+  const exponent = 100;
+  const result = pow(base, exponent);
+  console.log(result);
