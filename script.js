@@ -1,46 +1,40 @@
-// ДЗ 1
-function drawTriangle(height, symbol) {
-    for (let i = 1; i <= height; i++) {
-      console.log(symbol.repeat(i));
+// DZ 1
+function isNumber(x) {
+  if (typeof x !== 'number' ) {
+    return false;
+  }
+  return true;
+}
+
+console.log(isNumber(5)); //  true
+console.log(isNumber('abc')); //  false
+console.log(isNumber('4534')); //  false
+
+
+//DZ 2
+
+
+function checkProbabilityTheory(X) {
+  let evenX = 0;
+  let oddX = 0;
+
+  for (let i = 0; i < X; i++) {
+    let randomNumber = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+    if (randomNumber % 3 === 0) {
+      evenX++;
+    } else {
+      oddX++;
     }
   }
-  drawTriangle(5, '*');
 
-  function drawTriangle(height, symbol) { 
-    let i = 1;
-    while (i <= height) { 
-      console.log(symbol.repeat(i)); 
-      i++;
-    } 
-  } 
-  drawTriangle(5, '*'); 
+  let totalGenerated = evenX + oddX ;
+  let evenPercentage = (evenX / totalGenerated) * 100;
+  let oddPercentage = (oddX  / totalGenerated) * 100;
 
-// ДЗ 2
+  console.log("Кількість згенерованих чисел: " + totalGenerated);
+  console.log("Парних чисел: " + evenX);
+  console.log("Не парних чисел: " + oddX);
+  console.log("Відсоток парних до не парних: " + evenPercentage.toFixed(2) + "% : " + oddPercentage.toFixed(2) + "%");
+}
 
-//  let sum = 0;
-// for (let i = 1; i <= 100; i++) {
-//   if (i % 3) continue;
-//     console.log(x = i)
-//     sum += i;
-// }
-// console.log(sum);
-
-
-// или так 
-
-// let sum = 0;
-// for (let i = 1; i <= 100; i++) {
-//   if (i % 3) continue;
-//     sum += i;
-// }
-// console.log(sum);
-
-// ДЗ 3
-function pow(x, y) {
-    return Math.pow(x, y);
-  }
-  
-  const base = 2;
-  const exponent = 100;
-  const result = pow(base, exponent);
-  console.log(result);
+checkProbabilityTheory(1000); 
