@@ -1,40 +1,57 @@
 // DZ 1
-function isNumber(x) {
-  if (typeof x !== 'number' ) {
-    return false;
-  }
-  return true;
-}
 
-console.log(isNumber(5)); //  true
-console.log(isNumber('abc')); //  false
-console.log(isNumber('4534')); //  false
-
-
-//DZ 2
-
-
-function checkProbabilityTheory(X) {
-  let evenX = 0;
-  let oddX = 0;
-
-  for (let i = 0; i < X; i++) {
-    let randomNumber = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
-    if (randomNumber % 3 === 0) {
-      evenX++;
-    } else {
-      oddX++;
+let myObject = {
+  name: 'John',
+  age: 30,
+  city: 'New York',
+  
+  getInfo: function() {
+    for (let prop in this) {
+      if (typeof this[prop] !== 'function') {
+        console.log(prop + ': ' + this[prop]);
+      }
     }
   }
+};
 
-  let totalGenerated = evenX + oddX ;
-  let evenPercentage = (evenX / totalGenerated) * 100;
-  let oddPercentage = (oddX  / totalGenerated) * 100;
+myObject.getInfo();
 
-  console.log("Кількість згенерованих чисел: " + totalGenerated);
-  console.log("Парних чисел: " + evenX);
-  console.log("Не парних чисел: " + oddX);
-  console.log("Відсоток парних до не парних: " + evenPercentage.toFixed(2) + "% : " + oddPercentage.toFixed(2) + "%");
+myObject.job = 'Engineer';
+
+myObject.getInfo();
+
+// DZ 2
+
+var services = {
+  "Послуга 1": "50 грн",
+  "Послуга 2": "100 грн",
+  "Послуга 3": "200 грн"
+};
+
+services['Додаткова послуга'] = "500 грн";
+function price() {
+  let total = 0;
+  for (let service in services) {
+      total += parseInt(services[service]);
+  }
+  return total;
+}
+function minPrice() {
+  let min = Infinity;
+  for (let service in services) {
+      min = Math.min(min, parseInt(services[service]));
+  }
+  return min;
+}
+function maxPrice() {
+  let max = 0;
+  for (let service in services) {
+      max = Math.max(max, parseInt(services[service]));
+  }
+  return max;
 }
 
-checkProbabilityTheory(1000); 
+console.log("Сума за всі послуги: " + price() + " грн");
+console.log("Мінімальна сума за послугу: " + minPrice() + " грн");
+console.log("Максимальна сума за послугу: " + maxPrice() + " грн");
+
