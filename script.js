@@ -85,4 +85,4 @@ function findValueByKey(companyName) {
     return 'Company not found';
 }
 
-console.log(findValueByKey('Клієнт 2'));
+console.log(findValueByKey('Клієнт 3'));
