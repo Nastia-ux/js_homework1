@@ -1,57 +1,88 @@
 // DZ 1
 
-let myObject = {
-  name: 'John',
-  age: 30,
-  city: 'New York',
-  
-  getInfo: function() {
-    for (let prop in this) {
-      if (typeof this[prop] !== 'function') {
-        console.log(prop + ': ' + this[prop]);
-      }
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function myBlend(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
+
+  myBlend(arr);
+  console.log(arr);
+
+  //DZ 2
+  const company = {
+    name: 'Велика Компанія',
+    type: 'Головна компанія',
+    platform: 'Платформа для продажу квитків',
+    sellsSolution: 'Рішення для продажу квитків',
+    clients: [
+        {
+            name: 'Клієнт 1',
+            type: 'subCompany',
+            uses: 'ПО для продажу квитків1',
+            sells: 'Рішення для продажу квитків1',
+            partners: [
+                {
+                    name: 'Клієнт 1.1',
+                    type: 'subCompany_1.1',
+                    uses: 'Рішення для продажу квитків1.1',
+                    sells: 'Рішення для продажу квитків1.1',
+                },
+                {
+                    name: 'Клієнт 1.2',
+                    type: 'subCompany_1.2',
+                    uses: 'Рішення для продажу квитків1.2',
+                    sells: 'Рішення для продажу квитків1.2',
+                    partners: [
+                        {
+                            name: 'Клієнт 1.2.3',
+                            type: 'subCompany_1.2.3',
+                            uses: 'Рішення для продажу квитків1.2.3',
+                            sells: 'Рішення для продажу квитків1.2.3',
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'Клієнт 2',
+            type: 'subCompany_2',
+            uses: 'ПО для продажу квитків2',
+            sells: 'Рішення для продажу квитків2'
+        }
+    ]
 };
 
-myObject.getInfo();
+function findValueByKey(companyName) {
+    function search(companyObj, name) {
+        if (companyObj.name === name) {
+            return companyObj;
+        }
+        if (companyObj.partners) {
+            for (const partner of companyObj.partners) {
+                const result = search(partner, name);
+                if (result) {
+                    return result;
+                }
+            }
+        }
+    }
 
-myObject.job = 'Engineer';
+    for (const client of company.clients) {
+        if (client.name === companyName) {
+            return client;
+        }
+        if (client.partners) {
+            const result = search(client, companyName);
+            if (result) {
+                return result;
+            }
+        }
+    }
 
-myObject.getInfo();
-
-// DZ 2
-
-var services = {
-  "Послуга 1": "50 грн",
-  "Послуга 2": "100 грн",
-  "Послуга 3": "200 грн"
-};
-
-services['Додаткова послуга'] = "500 грн";
-function price() {
-  let total = 0;
-  for (let service in services) {
-      total += parseInt(services[service]);
-  }
-  return total;
-}
-function minPrice() {
-  let min = Infinity;
-  for (let service in services) {
-      min = Math.min(min, parseInt(services[service]));
-  }
-  return min;
-}
-function maxPrice() {
-  let max = 0;
-  for (let service in services) {
-      max = Math.max(max, parseInt(services[service]));
-  }
-  return max;
+    return 'Company not found';
 }
 
-console.log("Сума за всі послуги: " + price() + " грн");
-console.log("Мінімальна сума за послугу: " + minPrice() + " грн");
-console.log("Максимальна сума за послугу: " + maxPrice() + " грн");
-
+console.log(findValueByKey('Клієнт 2'));
